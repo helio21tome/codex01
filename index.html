@@ -18,6 +18,7 @@
       margin: 0;
       width: 100%;
       min-height: 100vh;
+      user-select: none; /* impede seleção de texto (extra proteção) */
     }
     header {
       background: #1F1F1F;
@@ -45,7 +46,7 @@
       border-radius: 10px;
       padding: 16px;
       width: 100%;
-      max-width: 500px;           /* largura máxima para não ficar muito largo em telas grandes */
+      max-width: 500px;
       box-shadow: 0 4px 15px rgba(0,0,0,0.3);
     }
     
@@ -147,7 +148,7 @@
   </style>
 </head>
 
-<body>
+<body oncontextmenu="return false;"> <!-- bloqueia clique direito -->
 
   <header>
     <button class="toggle-menu" onclick="toggleMenu()">Click Here To See The List of Folders</button>
@@ -171,7 +172,6 @@
     <a href="#product15">🔥High school thots🥵</a>
     <a href="#product16">🥵PEDOMOM↕️</a>
     <a href="#product17">🔥RAPE FOLDER✅🔥</a>
-    <!-- <a href="#product18">✅CP 5🔥</a>-->
     <a href="#product19">🔥FOOT CP✅</a>
     <a href="#product20">CP PARADISE✅</a>
   </div>
@@ -255,7 +255,7 @@
       <div class="description" style="text-align: center;">Preview↕️</div>
       <div class="video-wrapper"><video controls><source src="https://leopard.hosting.pecon.us/dl/ebmjn/1.mp4" type="video/mp4"></video></div>
       <div class="description" style="text-align: center;">Preview↕️</div>
-      <div class="video-wrapper"><video controls><source src="https://leopard.hosting.pecon.us/dl/yrimi" type="video/mp4"></video></div>
+      <div class="video-wrapper"><video controls><source src="https://leopard.hosting.pecon.us/dl/pzhni" type="video/mp4"></video></div>
       <div class="description">✅🥵5GB folder on MEGA 60 files</div>
       <div class="description">✅Complete Folder✅</div>
       <h3 style="text-align: center; margin: 20px 0 10px;">Purchase Options</h3>
@@ -426,7 +426,7 @@
       <div class="description" style="text-align: center;">Preview↕️</div>
       <div class="video-wrapper"><video controls><source src="https://leopard.hosting.pecon.us/dl/lzehy" type="video/mp4"></video></div>
       <div class="description" style="text-align: center;">Preview↕️</div>
-      <div class="video-wrapper"><video controls><source src="https://leopard.hosting.pecon.us/dl/vrchw" type="video/mp4"></video></div> <!-- duplicado, ajusta se tiver outro link -->
+      <div class="video-wrapper"><video controls><source src="https://leopard.hosting.pecon.us/dl/vrchw" type="video/mp4"></video></div>
       <div class="description">✅🔥3GB folder on MEGA 40 files </div>
       <div class="description">✅Premium content. Payment gives✅</div>
       <h3 style="text-align: center; margin: 20px 0 10px;">Purchase Options</h3>
@@ -441,7 +441,7 @@
       <div class="description" style="text-align: center;">Preview↕️</div>
       <div class="video-wrapper"><video controls><source src="https://leopard.hosting.pecon.us/dl/aepoz" type="video/mp4"></video></div>
       <div class="description" style="text-align: center;">Preview↕️</div>
-      <div class="video-wrapper"><video controls><source src="https://leopard.hosting.pecon.us/dl/swfcu" type="video/mp4"></video></div> <!-- duplicado, ajusta se necessário -->
+      <div class="video-wrapper"><video controls><source src="https://leopard.hosting.pecon.us/dl/swfcu" type="video/mp4"></video></div>
       <div class="description">✅🔥1.36 folder on MEGA 46 files and 474 subfolders </div>
       <div class="description" style="text-align: center;">✅Premium content. Payment gives✅</div>
       <h3 style="text-align: center; margin: 20px 0 10px;">Purchase Options</h3>
@@ -450,28 +450,13 @@
       <div class="description">Secure and instant delivery after verification.</div>
     </div>
 
-    <!-- Produto 18 
-    <div id="product18" class="product-card" data-product="CP 5 FOLDER" data-price="35">
-      <div class="titulox"><h3>✅CP 5🔥</h3></div>
-      <div class="description" style="text-align: center;">Preview↕️</div>
-      <div class="video-wrapper"><video controls><source src="https://files.catbox.moe/zxuwdz.mp4" type="video/mp4"></video></div>
-      <div class="description" style="text-align: center;">Preview↕️</div>
-      <div class="video-wrapper"><video controls><source src="https://files.catbox.moe/ltiug8.mp4" type="video/mp4"></video></div>
-      <div class="description">✅6.5GB IN TOTAL, MORE THAN 300 VIDEOS</div>
-      <div class="description" style="text-align: center;">✅Premium content. Payment gives✅</div>
-      <h3 style="text-align: center; margin: 20px 0 10px;">Purchase Options</h3>
-      <button class="telegram-button purchase-button buy-btn">🎧 Contact Seller $35</button>
-      <div class="old-price">Price $47.00</div>
-      <div class="description">Secure and instant delivery after verification.</div>
-    </div>-->
-
     <!-- Produto 19 -->
     <div id="product19" class="product-card" data-product="FOOT CP FOLDER" data-price="30">
       <div class="titulox"><h3>🔥FOOT CP✅</h3></div>
       <div class="description" style="text-align: center;">Preview↕️</div>
-      <div class="video-wrapper"><video controls><source src="https://leopard.hosting.pecon.us/dl/dswhe" type="video/mp4"></video></div> <!-- substitui por link real se tiver -->
+      <div class="video-wrapper"><video controls><source src="https://leopard.hosting.pecon.us/dl/dswhe" type="video/mp4"></video></div>
       <div class="description" style="text-align: center;">Preview↕️</div>
-      <div class="video-wrapper"><video controls><source src="https://leopard.hosting.pecon.us/dl/cfsfd" type="video/mp4"></video></div> <!-- substitui por link real -->
+      <div class="video-wrapper"><video controls><source src="https://leopard.hosting.pecon.us/dl/cfsfd" type="video/mp4"></video></div>
       <div class="description">MORE THAN 100 VIDEOS,4.5GB IN TOTAL</div>
       <div class="description" style="text-align: center;">✅Premium content. Payment gives✅</div>
       <h3 style="text-align: center; margin: 20px 0 10px;">Purchase Options</h3>
@@ -484,9 +469,9 @@
     <div id="product20" class="product-card" data-product="CP PARADISE FOLDER" data-price="30">
       <div class="titulox"><h3>✅CP PARADISE🔥</h3></div>
       <div class="description" style="text-align: center;">Preview↕️</div>
-      <div class="video-wrapper"><video controls><source src="https://leopard.hosting.pecon.us/dl/ogslz" type="video/mp4"></video></div> <!-- substitui por link real -->
+      <div class="video-wrapper"><video controls><source src="https://leopard.hosting.pecon.us/dl/ogslz" type="video/mp4"></video></div>
       <div class="description" style="text-align: center;">Preview↕️</div>
-      <div class="video-wrapper"><video controls><source src="https://leopard.hosting.pecon.us/dl/npgfr" type="video/mp4"></video></div> <!-- substitui por link real -->
+      <div class="video-wrapper"><video controls><source src="https://leopard.hosting.pecon.us/dl/npgfr" type="video/mp4"></video></div>
       <div class="description">➡️MORE THAN 150 VIDEOS✅4GB IN TOTAL</div>
       <div class="description" style="text-align: center;">✅Premium content. Payment gives✅</div>
       <h3 style="text-align: center; margin: 20px 0 10px;">Purchase Options</h3>
@@ -503,7 +488,7 @@
 
   <script>
     const TELEGRAM_USER = "USD808";
-    const SELLER = "Admim";  // ← alterado para o nome que usavas antes (podes mudar)
+    const SELLER = "Admim";
 
     function getTelegramLink(text = "") {
       const encoded = encodeURIComponent(text);
@@ -514,6 +499,41 @@
       const menu = document.getElementById('menu');
       menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
     }
+
+    // BLOQUEIO DE INSPECIONAR E CLIQUE DIREITO
+    document.addEventListener('contextmenu', event => event.preventDefault());
+
+    document.addEventListener('keydown', function(event) {
+      // Bloqueia F12, Ctrl+Shift+I/J/C, Ctrl+U, Ctrl+S, etc.
+      if (
+        event.key === "F12" ||
+        (event.ctrlKey && event.shiftKey && (event.key === 'I' || event.key === 'J' || event.key === 'C')) ||
+        (event.ctrlKey && (event.key === 'u' || event.key === 'U' || event.key === 's' || event.key === 'S' || event.key === 'p' || event.key === 'P'))
+      ) {
+        event.preventDefault();
+        alert("Acesso ao código-fonte bloqueado.");
+        return false;
+      }
+    });
+
+    // Detecta abertura do DevTools (método aproximado)
+    let devtoolsOpen = false;
+    const threshold = 160; // pixels
+    setInterval(() => {
+      const widthDiff = window.outerWidth - window.innerWidth;
+      const heightDiff = window.outerHeight - window.innerHeight;
+      if (widthDiff > threshold || heightDiff > threshold) {
+        if (!devtoolsOpen) {
+          devtoolsOpen = true;
+          alert("Ferramentas de desenvolvedor detectadas. Acesso restrito.");
+          // Opcional: redirecionar ou fechar aba
+          // window.location.href = "about:blank";
+          // ou window.close();
+        }
+      } else {
+        devtoolsOpen = false;
+      }
+    }, 500);
 
     document.addEventListener("DOMContentLoaded", function () {
       document.querySelectorAll("#menu a").forEach(link => {
