@@ -300,7 +300,10 @@
 
     // Contact Seller Button Functionality
     document.getElementById("contact-seller").addEventListener("click", function() {
-        const message = `👋 Hi Admim\n\nI'm interested in purchasing this content:\n"${title}"\n\nCould you please:\n1. Confirm availability\n2. Share payment details\n3. Explain delivery process\n\nThank you! 😊`;
+        const message = `👋 Hi Admim\n\nI'm interested in purchasing this content:\n"${title}"\n\n
+        Share payment details\n
+        Explain delivery process\n\n
+        Thanks!`;
         
         const telegramUrl = `https://t.me/USD808?text=${encodeURIComponent(message)}`;
         window.open(telegramUrl, '_blank');
