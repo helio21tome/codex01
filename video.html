@@ -107,7 +107,7 @@
             Your browser does not support HTML5 video.
           </video>
           <div id="video-error" class="hidden absolute inset-0 bg-black/80 flex items-center justify-center text-red-500 font-bold p-6 rounded-xl text-center text-lg">
-            Erro ao carregar vídeo. Verifique o console ou contate o suporte.
+            Error loading video. Check console or contact support.
           </div>
         </div>
 
@@ -116,21 +116,21 @@
           <h2 id="video-title" class="text-2xl md:text-3xl font-bold neon-title"></h2>
           <div class="text-right">
             <p class="text-base text-zinc-300 flex items-center gap-2">
-              <span>👁️</span> <span id="video-views">0</span> visualizações
+              <span>👁️</span> <span id="video-views">0</span> views
             </p>
           </div>
         </div>
 
         
         <div class="bg-zinc-900/80 backdrop-blur-sm p-6 rounded-2xl border border-purple-900/30 shadow-xl space-y-6">
-          <h3 class="text-xl font-semibold neon-title">Opções de Compra</h3>
+          <h3 class="text-xl font-semibold neon-title">Purchase Options</h3>
           <div class="grid gap-4">
 
             <div class="bg-black/60 p-5 rounded-xl border border-pink-900/30">
-              <h4 class="text-pink-500 font-semibold mb-3 text-lg">🔴 Contato Direto</h4>
-              <p class="text-sm mb-4 text-zinc-400">Entre em contato diretamente via Telegram para adquirir</p>
+              <h4 class="text-pink-500 font-semibold mb-3 text-lg">🔴 Direct Contact</h4>
+              <p class="text-sm mb-4 text-zinc-400">Contact the seller directly via Telegram to purchase</p>
               <button id="contact-seller" class="w-full text-center bg-gradient-to-r from-purple-700 to-pink-700 hover:from-purple-600 hover:to-pink-600 text-white py-3.5 rounded-xl font-bold text-lg shadow-lg transition-all duration-300">
-                🎧 Contactar Vendedor
+                🎧 Contact Seller
               </button>
             </div>
           </div>
@@ -138,21 +138,21 @@
 
         
         <div class="bg-zinc-900/80 backdrop-blur-sm p-6 rounded-2xl border border-purple-900/30 shadow-xl text-base">
-          <h3 class="text-xl font-semibold mb-4 neon-title">📄 Descrição do Conteúdo</h3>
+          <h3 class="text-xl font-semibold mb-4 neon-title">📄 Content Description</h3>
           <p id="video-description" class="text-zinc-300 leading-relaxed whitespace-pre-line"></p>
         </div>
       </div>
     
       <aside class="space-y-6">
-        <h3 class="text-xl font-semibold neon-title">Vídeos Sugeridos</h3>
+        <h3 class="text-xl font-semibold neon-title">Suggested Videos</h3>
         <div id="suggested-videos" class="space-y-6"></div>
       </aside>
     </div>
 
     <footer class="bg-black/80 border-t border-purple-900/30 py-10 text-center text-zinc-500 mt-12">
       <h2 class="text-2xl font-bold neon-title text-pink-600 mb-3">HOT-STORE</h2>
-      <p class="mb-4 text-zinc-400">Plataforma premium de conteúdo adulto exclusivo.</p>
-      <p class="text-xs">© 2025 X STORE. Apenas para maiores de 18 anos.</p>
+      <p class="mb-4 text-zinc-400">Premium adult exclusive content platform.</p>
+      <p class="text-xs">© 2025 HOT-STORE.</p>
     </footer>
 
     <script>
@@ -316,6 +316,7 @@
         "🚨HIGH SCHOOL THOTS🚨 BIG PROMO ✅MORE THAN 300 Videos ✅6GB IN TOTAL ✅TEENS", 
         //DESIRE GARCIA FOLDER     
         "✅DESIREE GARCIE folder 📁 Snapchat hacking tools snap leak Complete folder"
+
     ];
 
     const id = parseInt(new URLSearchParams(window.location.search).get("id")) || 1;
@@ -323,7 +324,7 @@
     const description = (videoDescriptions[id - 1] || "Description not available for this video.").split('✅').join('<br>');
     const views = Math.floor(Math.random() * 10000);
 
-    const posterUrl = coverUrls[id - 1] || `https://via.placeholder.com/1280x720?text=Sem+Poster+${id}`;
+    const posterUrl = coverUrls[id - 1] || `https://via.placeholder.com/1280x720?text=No+Poster+${id}`;
     const videoUrl  = videoUrls[id - 1]  || "";
 
     const videoPlayer = document.getElementById("video-player");
@@ -337,7 +338,7 @@
         videoPlayer.load();
     } else {
         videoPlayer.controls = false;
-        videoError.innerHTML = "Conteúdo completo disponível apenas após compra via Telegram.<br>Entre em contato para adquirir.";
+        videoError.innerHTML = "Full content available only after purchase via Telegram.<br>Contact us to acquire.";
         videoError.classList.remove('hidden');
     }
 
@@ -347,13 +348,13 @@
     });
 
     document.getElementById("video-title").innerHTML = `${title} <span class='text-pink-500'>⭐</span>`;
-    document.getElementById("video-views").textContent = views;
+    document.getElementById("video-views").textContent = views.toLocaleString();
     document.getElementById("video-description").innerHTML = description; 
     
     const suggestedVideos = videoTitles.map((title, index) => ({
         id: index + 1,
         title,
-        image: coverUrls[index] || `https://via.placeholder.com/400x225?text=Sem+Capa+${index+1}`
+        image: coverUrls[index] || `https://via.placeholder.com/400x225?text=No+Cover+${index+1}`
     })).filter(v => v.id !== id).sort(() => 0.5 - Math.random()).slice(0, 3);
 
     const container = document.getElementById("suggested-videos");
@@ -371,9 +372,9 @@
         `;
     });
 
-    // Contact Seller Button Functionality (mensagem simplificada como no teu código)
+    // Contact Seller Button Functionality
     document.getElementById("contact-seller").addEventListener("click", function() {
-        const message = `👋 Hi Admim\n\nI'm interested in purchasing this content:\n"${title}"\n\nShare payment details\nExplain delivery process\n\nThanks!`;
+        const message = `👋 Hi Admin\n\nI'm interested in purchasing this content:\n"${title}"\n\nPlease:\n- Share payment details\n- Explain delivery process\n\nThanks! 😊`;
         
         const telegramUrl = `https://t.me/USD808?text=${encodeURIComponent(message)}`;
         window.open(telegramUrl, '_blank');
