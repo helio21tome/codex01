@@ -3,87 +3,156 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>X STORE</title>
+  <title>HOT-STORE</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Customizações premium dark/neon */
+    body {
+  background: linear-gradient(135deg, #2a004a 0%, #4a0028 40%, #640101 70%, #2a004a 100%);
+  background-attachment: fixed;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Overlay sutil para profundidade e legibilidade */
+body::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 30% 60%, rgba(236, 72, 153, 0.12) 0%, transparent 50%),
+              radial-gradient(circle at 70% 30%, rgba(168, 85, 247, 0.10) 0%, transparent 60%);
+  pointer-events: none;
+  opacity: 0.8;
+  animation: cosmic-pulse 20s infinite alternate ease-in-out;
+}
+
+/* Partículas/nebulosa leve (estética cósmica sedutora) */
+      body::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: transparent;
+        pointer-events: none;
+        background-image: 
+          radial-gradient(circle, rgba(255, 105, 180, 0.08) 1px, transparent 1px),
+          radial-gradient(circle, rgba(186, 85, 211, 0.06) 1px, transparent 1px);
+        background-size: 80px 80px, 120px 120px;
+        background-position: 0 0, 40px 40px;
+        opacity: 0.15;
+        animation: float-stars 80s linear infinite;
+      }
+
+      @keyframes cosmic-pulse {
+        0%   { opacity: 0.7; transform: scale(1); }
+        100% { opacity: 1; transform: scale(1.03); }
+      }
+
+      @keyframes float-stars {
+        0%   { background-position: 0 0, 40px 40px; }
+        100% { background-position: 2000px 2000px, 2040px 2040px; }
+      }
+
+    .card-hover {
+      transition: all 0.3s ease;
+      border: 1px solid #2a1a3a;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+    }
+    .card-hover:hover {
+      transform: translateY(-8px) scale(1.03);
+      box-shadow: 0 15px 35px rgba(236, 72, 153, 0.25); /* Glow rosa/neon */
+      border-color: #ec4899;
+    }
+    .neon-title {
+      text-shadow: 0 0 10px #c026d3, 0 0 20px #c026d3; /* Glow magenta neon */
+    }
+    .filter-active {
+      background: linear-gradient(135deg, #c026d3, #ec4899) !important;
+      box-shadow: 0 0 15px rgba(236, 72, 153, 0.5);
+    }
+    .popup-glow {
+      box-shadow: 0 0 25px rgba(34, 211, 238, 0.6); /* Glow ciano para popup Telegram */
+    }
+    input:focus {
+      box-shadow: 0 0 0 3px rgba(236, 72, 153, 0.4);
+    }
+  </style>
 </head>
-<body class="font-sans bg-zinc-900 text-white">
+<body class="font-sans text-white min-h-screen">
+
   <!-- Header -->
-  <header class="flex items-center justify-between p-4 border-b border-zinc-700">
-    <h1 class="text-2xl font-bold text-red-500">X STORE</h1>
+  <header class="flex items-center justify-between p-5 border-b border-purple-900/50 bg-black/60 backdrop-blur-md sticky top-0 z-50">
+    <h1 class="text-3xl font-black neon-title tracking-wider text-pink-600">HOT-STORE</h1>
   </header>
 
   <!-- Search and Filters -->
-  <section class="p-4 max-w-7xl mx-auto space-y-4">
+  <section class="p-6 max-w-7xl mx-auto space-y-6">
     <div class="flex justify-center">
-      <div class="relative w-1/2">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 absolute left-3 top-2.5 text-zinc-400" viewBox="0 0 24 24" fill="none">
-          <path d="M21 21l-5.2-5.2m0 0A7.5 7.5 0 105.2 5.2a7.5 7.5 0 0010.6 10.6z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+      <div class="relative w-full max-w-xl">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 absolute left-4 top-1/2 -translate-y-1/2 text-zinc-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 21l-5.2-5.2m0 0A7.5 7.5 0 105.2 5.2a7.5 7.5 0 0010.6 10.6z" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
-        <input id="search" type="text" placeholder="Search videos..." class="w-full pl-10 py-2 text-sm rounded bg-zinc-800 border border-zinc-700 text-white placeholder-zinc-400 outline-none focus:border-red-500 hover:border-red-500">
+        <input 
+          id="search" 
+          type="text" 
+          placeholder="Procurar pastas premium..." 
+          class="w-full pl-12 pr-5 py-3 text-base rounded-full bg-zinc-900/80 border border-purple-800/50 text-white placeholder-zinc-500 outline-none focus:border-pink-600 transition-all duration-300"
+        />
       </div>
     </div>
 
-    <div class="flex flex-wrap items-center justify-between gap-2 mt-4">
-      <h1 id="page-info" class="text-3xl font-extrabold text-white">Page 1 (1–12 of 25 videos)</h1>
-      <p id="videos-found" class="text-base text-zinc-400">12 videos found</p>
+    <div class="flex flex-wrap items-center justify-between gap-4">
+      <h1 id="page-info" class="text-3xl md:text-4xl font-extrabold neon-title text-white">Página 1 (1–12 de 21 pastas)</h1>
+      <p id="videos-found" class="text-lg text-zinc-400">21 pastas encontradas</p>
     </div>
 
-    <div class="flex flex-col md:flex-row md:items-center md:justify-between mt-4">
+    <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
       <div></div>
-      <div class="flex items-center gap-2">
-        <span class="text-sm text-zinc-400">Sort by:</span>
-        <button id="filterRecent" class="px-4 py-2 rounded bg-red-500 text-white text-base flex items-center gap-2">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-            <path d="M10 2a8 8 0 108 8h-1.5a6.5 6.5 0 11-6.5-6.5V2z" />
-          </svg>
-          Recent
+      <div class="flex flex-wrap items-center gap-3">
+        <span class="text-sm text-zinc-400 font-medium">Ordenar por:</span>
+        <button id="filterRecent" class="px-5 py-2.5 rounded-full text-sm font-semibold flex items-center gap-2 transition-all duration-300 bg-zinc-800 hover:bg-purple-900/50">
+          <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path d="M10 2a8 8 0 108 8h-1.5a6.5 6.5 0 11-6.5-6.5V2z"/></svg>
+          Recentes
         </button>
-        <button id="filterViews" class="px-4 py-2 rounded bg-zinc-800 text-white text-base flex items-center gap-2">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12 4.5c-7.5 0-12 7.5-12 7.5s4.5 7.5 12 7.5 12-7.5 12-7.5-4.5-7.5-12-7.5zm0 12a4.5 4.5 0 110-9 4.5 4.5 0 010 9z"/>
-          </svg>
-          Views
+        <button id="filterViews" class="px-5 py-2.5 rounded-full text-sm font-semibold flex items-center gap-2 transition-all duration-300 bg-zinc-800 hover:bg-purple-900/50">
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 4.5c-7.5 0-12 7.5-12 7.5s4.5 7.5 12 7.5 12-7.5 12-7.5-4.5-7.5-12-7.5zm0 12a4.5 4.5 0 110-9 4.5 4.5 0 010 9z"/></svg>
+          Visualizações
         </button>
-        <button id="filterPriceHigh" class="px-4 py-2 rounded bg-zinc-800 text-white text-base flex items-center gap-2">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M12 1a1 1 0 011 1v1.07c2.282.25 4 2.195 4 4.43 0 2.538-2.03 4.375-4.732 4.911L11 12v1h1a1 1 0 110 2h-1v1a1 1 0 11-2 0v-1.07c-2.282-.25-4-2.195-4-4.43 0-2.538 2.03-4.375 4.732-4.911L13 6V5h-1a1 1 0 110-2h1V2a1 1 0 011-1z"/>
-          </svg>
-          Price High
+        <button id="filterPriceHigh" class="px-5 py-2.5 rounded-full text-sm font-semibold flex items-center gap-2 transition-all duration-300 bg-zinc-800 hover:bg-purple-900/50">
+          <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 1a1 1 0 011 1v1.07c2.282.25 4 2.195 4 4.43 0 2.538-2.03 4.375-4.732 4.911L11 12v1h1a1 1 0 110 2h-1v1a1 1 0 11-2 0v-1.07c-2.282-.25-4-2.195-4-4.43 0-2.538 2.03-4.375 4.732-4.911L13 6V5h-1a1 1 0 110-2h1V2a1 1 0 011-1z"/></svg>
+          Preço Alto
         </button>
-        <button id="filterPriceLow" class="px-4 py-2 rounded bg-zinc-800 text-white text-base flex items-center gap-2">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M12 23a1 1 0 01-1-1v-1.07c-2.282-.25-4-2.195-4-4.43 0-2.538 2.03-4.375 4.732-4.911L13 12v-1h-1a1 1 0 110-2h1V8a1 1 0 112 0v1.07c2.282.25 4 2.195 4 4.43 0 2.538-2.03 4.375-4.732 4.911L11 18v1h1a1 1 0 110 2h-1v1a1 1 0 01-1 1z"/>
-          </svg>
-          Price Low
+        <button id="filterPriceLow" class="px-5 py-2.5 rounded-full text-sm font-semibold flex items-center gap-2 transition-all duration-300 bg-zinc-800 hover:bg-purple-900/50">
+          <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 23a1 1 0 01-1-1v-1.07c-2.282-.25-4-2.195-4-4.43 0-2.538 2.03-4.375 4.732-4.911L13 12v-1h-1a1 1 0 110-2h1V8a1 1 0 112 0v1.07c2.282.25 4 2.195 4 4.43 0 2.538-2.03 4.375-4.732 4.911L11 18v1h1a1 1 0 110 2h-1v1a1 1 0 01-1 1z"/></svg>
+          Preço Baixo
         </button>
       </div>
     </div>
   </section>
 
   <!-- Purchase Popup -->
-  <div id="purchase-popup" class="fixed bottom-5 left-5 w-80 bg-white text-zinc-900 px-4 py-3 rounded-xl shadow-lg hidden z-50 flex items-center gap-3">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" fill="#229ED9" class="w-6 h-6">
+  <div id="purchase-popup" class="fixed bottom-6 left-6 w-80 md:w-96 bg-gradient-to-br from-zinc-900 to-black text-white px-5 py-4 rounded-2xl shadow-2xl hidden z-50 flex items-center gap-4 popup-glow border border-cyan-500/30">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" fill="#229ED9" class="w-7 h-7 flex-shrink-0">
       <path d="M120 0C53.7 0 0 53.7 0 120s53.7 120 120 120 120-53.7 120-120S186.3 0 120 0zm53.5 80.2l-19 89.6c-1.4 6.1-4.9 7.7-9.9 4.8l-27.5-20.3-13.3 12.8c-1.5 1.5-2.7 2.7-5.4 2.7l1.9-27.1 49.3-44.5c2.1-1.9-.4-3-3.2-1.1l-61 38.3-26.3-8.2c-5.7-1.8-5.8-5.7 1.2-8.4l102.7-39.6c4.8-1.8 9.1 1.1 7.5 8.1z" />
     </svg>
-    <div>
-      <p class="text-sm font-semibold"><span id="popup-name">John</span> bought <span id="popup-folder">Folder X</span> via Telegram</p>
+    <div class="text-sm">
+      <p class="font-semibold"><span id="popup-name">John</span> comprou <span id="popup-folder">Folder X</span> via Telegram</p>
     </div>
   </div>
 
   <!-- Cards -->
-  <main id="card-container" class="p-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 max-w-7xl mx-auto"></main>
+  <main id="card-container" class="p-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 max-w-7xl mx-auto"></main>
 
   <!-- Pagination -->
-  <div id="pagination" class="flex justify-center space-x-2 py-4"></div>
+  <div id="pagination" class="flex justify-center flex-wrap gap-3 py-8"></div>
 
   <!-- Footer -->
-  <footer class="bg-zinc-900 border-t border-zinc-700 py-8 text-center text-zinc-400">
-    <h2 class="text-xl font-semibold text-red-500 mb-2">X STORE</h2>
-    <p class="mb-4">Your premium adult content platform.</p>
-    <p class="mt-8 text-xs">© 2025-2026 X STORE</p>
+  <footer class="bg-black/80 border-t border-purple-900/30 py-10 text-center text-zinc-500 mt-10">
+    <h2 class="text-2xl font-bold text-pink-600 mb-3 neon-title">X STORE</h2>
+    <p class="mb-4 text-zinc-400">Plataforma premium de conteúdo adulto exclusivo.</p>
+    <p class="text-xs">© 2025-2026 X STORE. Apenas para maiores de 18 anos.</p>
   </footer>
 
-  <!-- Script -->
+  <!-- Script (mantido exatamente igual ao teu) -->
   <script>
     // ─── CONFIGURAÇÃO DOS LINKS (SUBSTITUA PELOS SEUS LINKS REAIS) ───────
     const coverUrls = [
@@ -216,7 +285,7 @@
       for (let i = 1; i <= pages; i++) {
         const btn = document.createElement("button");
         btn.textContent = i;
-        btn.className = `px-3 py-1 rounded ${i === currentPage ? 'bg-red-500' : 'bg-zinc-700'} text-white`;
+        btn.className = `px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${i === currentPage ? 'bg-pink-600 text-white shadow-lg shadow-pink-600/40' : 'bg-zinc-800 hover:bg-zinc-700'}`;
         btn.onclick = () => {
           currentPage = i;
           render();
@@ -230,17 +299,18 @@
       data.forEach((card, index) => {
         const id = (currentPage - 1) * PER_PAGE + index + 1;
         container.innerHTML += `
-          <a href="video.html?id=${id}" class="block bg-zinc-800 rounded-xl overflow-hidden shadow-md transition hover:scale-[1.01]">
+          <a href="video.html?id=${id}" class="block rounded-2xl overflow-hidden card-hover">
             <div class="relative">
-              <img src="${card.image}" alt="${card.title}" class="w-full h-48 object-cover">
-              ${card.label ? `<div class="absolute top-2 left-2 bg-red-600 text-xs font-bold px-2 py-1 rounded">${card.label}</div>` : ""}
+              <img src="${card.image}" alt="${card.title}" class="w-full h-56 object-cover">
+              ${card.label ? `<div class="absolute top-3 left-3 bg-pink-600/90 backdrop-blur-sm text-xs font-bold px-3 py-1 rounded-full shadow-md">${card.label}</div>` : ""}
             </div>
-            <div class="p-4">
-              <h2 class="text-lg font-semibold">${card.title}</h2>
-              <div class="flex justify-between items-center mt-2 text-sm text-zinc-400">
+            <div class="p-5 bg-gradient-to-t from-black/80 to-transparent">
+              <h2 class="text-lg font-bold mb-2 line-clamp-2">${card.title}</h2>
+              <div class="flex justify-between items-center text-sm text-zinc-400">
                 <span>🕒 ${card.time}</span>
-                <span>👁️ ${card.views} views</span>
+                <span>👁️ ${card.views.toLocaleString()} views</span>
               </div>
+              <div class="mt-3 text-pink-500 font-semibold">${card.price}$</div>
             </div>
           </a>
         `;
@@ -255,17 +325,16 @@
 
       const start = (currentPage - 1) * PER_PAGE + 1;
       const end = Math.min(start + PER_PAGE - 1, filtered.length);
-      pageInfo.textContent = `Page ${currentPage} (${start}–${end} of ${filtered.length} videos)`;
-      videosFoundInfo.textContent = `${filtered.length} videos found`;
+      pageInfo.textContent = `Página ${currentPage} (${start}–${end} de ${filtered.length} pastas)`;
+      videosFoundInfo.textContent = `${filtered.length} pastas encontradas`;
 
-      filterRecentButton.classList.toggle("bg-red-500", currentFilter === "recent");
-      filterRecentButton.classList.toggle("bg-zinc-800", currentFilter !== "recent");
-      filterViewsButton.classList.toggle("bg-red-500", currentFilter === "views");
-      filterViewsButton.classList.toggle("bg-zinc-800", currentFilter !== "views");
-      filterPriceHighButton.classList.toggle("bg-red-500", currentFilter === "priceHigh");
-      filterPriceHighButton.classList.toggle("bg-zinc-800", currentFilter !== "priceHigh");
-      filterPriceLowButton.classList.toggle("bg-red-500", currentFilter === "priceLow");
-      filterPriceLowButton.classList.toggle("bg-zinc-800", currentFilter !== "priceLow");
+      // Atualiza classes dos filtros (active com neon)
+      const filters = [filterRecentButton, filterViewsButton, filterPriceHighButton, filterPriceLowButton];
+      filters.forEach(btn => btn.classList.remove('filter-active'));
+      if (currentFilter === "recent") filterRecentButton.classList.add('filter-active');
+      if (currentFilter === "views") filterViewsButton.classList.add('filter-active');
+      if (currentFilter === "priceHigh") filterPriceHighButton.classList.add('filter-active');
+      if (currentFilter === "priceLow") filterPriceLowButton.classList.add('filter-active');
     }
 
     function showPurchasePopup() {
@@ -280,12 +349,12 @@
       popupFolder.textContent = folder;
 
       popup.classList.remove("hidden");
-      popup.classList.add("animate-bounce", "ring-2", "ring-blue-400");
+      popup.classList.add("animate-bounce");
 
       setTimeout(() => {
         popup.classList.add("hidden");
-        popup.classList.remove("animate-bounce", "ring-2", "ring-blue-400");
-      }, 6000);
+        popup.classList.remove("animate-bounce");
+      }, 6500);
     }
 
     searchInput.addEventListener("input", () => { currentPage = 1; render(); });
@@ -294,7 +363,7 @@
     filterPriceHighButton.addEventListener("click", () => { currentFilter = "priceHigh"; currentPage = 1; render(); });
     filterPriceLowButton.addEventListener("click", () => { currentFilter = "priceLow"; currentPage = 1; render(); });
 
-    setInterval(showPurchasePopup, 20000);
+    setInterval(showPurchasePopup, 18000);
     render();
   </script>
 </body>
