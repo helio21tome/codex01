@@ -8,50 +8,50 @@
   <style>
     /* Customizações premium dark/neon */
     body {
-  background: linear-gradient(135deg, #2a004a 0%, #4a0028 40%, #640101 70%, #2a004a 100%);
-  background-attachment: fixed;
-  position: relative;
-  overflow-x: hidden;
-}
+      background: linear-gradient(135deg, #2a004a 0%, #4a0028 40%, #640101 70%, #2a004a 100%);
+      background-attachment: fixed;
+      position: relative;
+      overflow-x: hidden;
+    }
 
-/* Overlay sutil para profundidade e legibilidade */
-body::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at 30% 60%, rgba(236, 72, 153, 0.12) 0%, transparent 50%),
-              radial-gradient(circle at 70% 30%, rgba(168, 85, 247, 0.10) 0%, transparent 60%);
-  pointer-events: none;
-  opacity: 0.8;
-  animation: cosmic-pulse 20s infinite alternate ease-in-out;
-}
+    /* Overlay sutil para profundidade e legibilidade */
+    body::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 30% 60%, rgba(236, 72, 153, 0.12) 0%, transparent 50%),
+                  radial-gradient(circle at 70% 30%, rgba(168, 85, 247, 0.10) 0%, transparent 60%);
+      pointer-events: none;
+      opacity: 0.8;
+      animation: cosmic-pulse 20s infinite alternate ease-in-out;
+    }
 
-/* Partículas/nebulosa leve (estética cósmica sedutora) */
-      body::after {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: transparent;
-        pointer-events: none;
-        background-image: 
-          radial-gradient(circle, rgba(255, 105, 180, 0.08) 1px, transparent 1px),
-          radial-gradient(circle, rgba(186, 85, 211, 0.06) 1px, transparent 1px);
-        background-size: 80px 80px, 120px 120px;
-        background-position: 0 0, 40px 40px;
-        opacity: 0.15;
-        animation: float-stars 80s linear infinite;
-      }
+    /* Partículas/nebulosa leve (estética cósmica sedutora) */
+    body::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: transparent;
+      pointer-events: none;
+      background-image: 
+        radial-gradient(circle, rgba(255, 105, 180, 0.08) 1px, transparent 1px),
+        radial-gradient(circle, rgba(186, 85, 211, 0.06) 1px, transparent 1px);
+      background-size: 80px 80px, 120px 120px;
+      background-position: 0 0, 40px 40px;
+      opacity: 0.15;
+      animation: float-stars 80s linear infinite;
+    }
 
-      @keyframes cosmic-pulse {
-        0%   { opacity: 0.7; transform: scale(1); }
-        100% { opacity: 1; transform: scale(1.03); }
-      }
+    @keyframes cosmic-pulse {
+      0%   { opacity: 0.7; transform: scale(1); }
+      100% { opacity: 1; transform: scale(1.03); }
+    }
 
-      @keyframes float-stars {
-        0%   { background-position: 0 0, 40px 40px; }
-        100% { background-position: 2000px 2000px, 2040px 2040px; }
-      }
-
+    @keyframes float-stars {
+      0%   { background-position: 0 0, 40px 40px; }
+      100% { background-position: 2000px 2000px, 2040px 2040px; }
+    }
+    
     .card-hover {
       transition: all 0.3s ease;
       border: 1px solid #2a1a3a;
@@ -59,18 +59,18 @@ body::before {
     }
     .card-hover:hover {
       transform: translateY(-8px) scale(1.03);
-      box-shadow: 0 15px 35px rgba(236, 72, 153, 0.25); /* Glow rosa/neon */
+      box-shadow: 0 15px 35px rgba(236, 72, 153, 0.25);
       border-color: #ec4899;
     }
     .neon-title {
-      text-shadow: 0 0 10px #c026d3, 0 0 20px #c026d3; /* Glow magenta neon */
+      text-shadow: 0 0 10px #c026d3, 0 0 20px #c026d3;
     }
     .filter-active {
       background: linear-gradient(135deg, #c026d3, #ec4899) !important;
       box-shadow: 0 0 15px rgba(236, 72, 153, 0.5);
     }
     .popup-glow {
-      box-shadow: 0 0 25px rgba(34, 211, 238, 0.6); /* Glow ciano para popup Telegram */
+      box-shadow: 0 0 25px rgba(34, 211, 238, 0.6);
     }
     input:focus {
       box-shadow: 0 0 0 3px rgba(236, 72, 153, 0.4);
@@ -94,36 +94,36 @@ body::before {
         <input 
           id="search" 
           type="text" 
-          placeholder="Procurar pastas premium..." 
+          placeholder="Search premium folders..." 
           class="w-full pl-12 pr-5 py-3 text-base rounded-full bg-zinc-900/80 border border-purple-800/50 text-white placeholder-zinc-500 outline-none focus:border-pink-600 transition-all duration-300"
         />
       </div>
     </div>
 
     <div class="flex flex-wrap items-center justify-between gap-4">
-      <h1 id="page-info" class="text-3xl md:text-4xl font-extrabold neon-title text-white">Página 1 (1–12 de 21 pastas)</h1>
-      <p id="videos-found" class="text-lg text-zinc-400">21 pastas encontradas</p>
+      <h1 id="page-info" class="text-3xl md:text-4xl font-extrabold neon-title text-white">Page 1 (1–12 of 21 folders)</h1>
+      <p id="videos-found" class="text-lg text-zinc-400">21 folders found</p>
     </div>
 
     <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
       <div></div>
       <div class="flex flex-wrap items-center gap-3">
-        <span class="text-sm text-zinc-400 font-medium">Ordenar por:</span>
+        <span class="text-sm text-zinc-400 font-medium">Sort by:</span>
         <button id="filterRecent" class="px-5 py-2.5 rounded-full text-sm font-semibold flex items-center gap-2 transition-all duration-300 bg-zinc-800 hover:bg-purple-900/50">
           <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path d="M10 2a8 8 0 108 8h-1.5a6.5 6.5 0 11-6.5-6.5V2z"/></svg>
-          Recentes
+          Recent
         </button>
         <button id="filterViews" class="px-5 py-2.5 rounded-full text-sm font-semibold flex items-center gap-2 transition-all duration-300 bg-zinc-800 hover:bg-purple-900/50">
           <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 4.5c-7.5 0-12 7.5-12 7.5s4.5 7.5 12 7.5 12-7.5 12-7.5-4.5-7.5-12-7.5zm0 12a4.5 4.5 0 110-9 4.5 4.5 0 010 9z"/></svg>
-          Visualizações
+          Views
         </button>
         <button id="filterPriceHigh" class="px-5 py-2.5 rounded-full text-sm font-semibold flex items-center gap-2 transition-all duration-300 bg-zinc-800 hover:bg-purple-900/50">
           <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 1a1 1 0 011 1v1.07c2.282.25 4 2.195 4 4.43 0 2.538-2.03 4.375-4.732 4.911L11 12v1h1a1 1 0 110 2h-1v1a1 1 0 11-2 0v-1.07c-2.282-.25-4-2.195-4-4.43 0-2.538 2.03-4.375 4.732-4.911L13 6V5h-1a1 1 0 110-2h1V2a1 1 0 011-1z"/></svg>
-          Preço Alto
+          Price High
         </button>
         <button id="filterPriceLow" class="px-5 py-2.5 rounded-full text-sm font-semibold flex items-center gap-2 transition-all duration-300 bg-zinc-800 hover:bg-purple-900/50">
           <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 23a1 1 0 01-1-1v-1.07c-2.282-.25-4-2.195-4-4.43 0-2.538 2.03-4.375 4.732-4.911L13 12v-1h-1a1 1 0 110-2h1V8a1 1 0 112 0v1.07c2.282.25 4 2.195 4 4.43 0 2.538-2.03 4.375-4.732 4.911L11 18v1h1a1 1 0 110 2h-1v1a1 1 0 01-1 1z"/></svg>
-          Preço Baixo
+          Price Low
         </button>
       </div>
     </div>
@@ -135,7 +135,7 @@ body::before {
       <path d="M120 0C53.7 0 0 53.7 0 120s53.7 120 120 120 120-53.7 120-120S186.3 0 120 0zm53.5 80.2l-19 89.6c-1.4 6.1-4.9 7.7-9.9 4.8l-27.5-20.3-13.3 12.8c-1.5 1.5-2.7 2.7-5.4 2.7l1.9-27.1 49.3-44.5c2.1-1.9-.4-3-3.2-1.1l-61 38.3-26.3-8.2c-5.7-1.8-5.8-5.7 1.2-8.4l102.7-39.6c4.8-1.8 9.1 1.1 7.5 8.1z" />
     </svg>
     <div class="text-sm">
-      <p class="font-semibold"><span id="popup-name">John</span> comprou <span id="popup-folder">Folder X</span> via Telegram</p>
+      <p class="font-semibold"><span id="popup-name">John</span> bought <span id="popup-folder">Folder X</span> via Telegram</p>
     </div>
   </div>
 
@@ -147,12 +147,12 @@ body::before {
 
   <!-- Footer -->
   <footer class="bg-black/80 border-t border-purple-900/30 py-10 text-center text-zinc-500 mt-10">
-    <h2 class="text-2xl font-bold text-pink-600 mb-3 neon-title">X STORE</h2>
-    <p class="mb-4 text-zinc-400">Plataforma premium de conteúdo adulto exclusivo.</p>
-    <p class="text-xs">© 2025-2026 X STORE. Apenas para maiores de 18 anos.</p>
+    <h2 class="text-2xl font-bold text-pink-600 mb-3 neon-title">HOT-STORE</h2>
+    <p class="mb-4 text-zinc-400">Premium adult exclusive content platform.</p>
+    <p class="text-xs">© 2025-2026 HOT-STORE</p>
   </footer>
 
-  <!-- Script (mantido exatamente igual ao teu) -->
+  <!-- Script -->
   <script>
     // ─── CONFIGURAÇÃO DOS LINKS (SUBSTITUA PELOS SEUS LINKS REAIS) ───────
     const coverUrls = [
@@ -237,7 +237,7 @@ body::before {
     const cards = Array.from({ length: videoTitles.length }).map((_, i) => ({
       title: videoTitles[i],
       time: `${10 + i % 10}s`,
-      image: coverUrls[i] || "https://via.placeholder.com/400x225?text=Sem+Capa+" + (i+1),
+      image: coverUrls[i] || "https://via.placeholder.com/400x225?text=No+Cover+" + (i+1),
       label: i % 5 === 0 ? "HOT" : (i % 4 === 0 ? "NEW" : ""),
       views: Math.floor(Math.random() * 1000),
       price: Math.floor(Math.random() * 50) + 10,
@@ -325,10 +325,9 @@ body::before {
 
       const start = (currentPage - 1) * PER_PAGE + 1;
       const end = Math.min(start + PER_PAGE - 1, filtered.length);
-      pageInfo.textContent = `Página ${currentPage} (${start}–${end} de ${filtered.length} pastas)`;
-      videosFoundInfo.textContent = `${filtered.length} pastas encontradas`;
+      pageInfo.textContent = `Page ${currentPage} (${start}–${end} of ${filtered.length} folders)`;
+      videosFoundInfo.textContent = `${filtered.length} folders found`;
 
-      // Atualiza classes dos filtros (active com neon)
       const filters = [filterRecentButton, filterViewsButton, filterPriceHighButton, filterPriceLowButton];
       filters.forEach(btn => btn.classList.remove('filter-active'));
       if (currentFilter === "recent") filterRecentButton.classList.add('filter-active');
