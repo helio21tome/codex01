@@ -6,15 +6,14 @@
   <title>HOT-STORE</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    /* Customizações premium dark/neon */
     body {
       background: linear-gradient(135deg, #2a004a 0%, #4a0028 40%, #640101 70%, #2a004a 100%);
       background-attachment: fixed;
       position: relative;
       overflow-x: hidden;
+      color: white;
+      font-family: ui-sans-serif, system-ui, sans-serif;
     }
-
-    /* Overlay sutil para profundidade e legibilidade */
     body::before {
       content: "";
       position: absolute;
@@ -25,37 +24,14 @@
       opacity: 0.8;
       animation: cosmic-pulse 20s infinite alternate ease-in-out;
     }
-
-    /* Partículas/nebulosa leve (estética cósmica sedutora) */
-    body::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: transparent;
-      pointer-events: none;
-      background-image: 
-        radial-gradient(circle, rgba(255, 105, 180, 0.08) 1px, transparent 1px),
-        radial-gradient(circle, rgba(186, 85, 211, 0.06) 1px, transparent 1px);
-      background-size: 80px 80px, 120px 120px;
-      background-position: 0 0, 40px 40px;
-      opacity: 0.15;
-      animation: float-stars 80s linear infinite;
-    }
-
     @keyframes cosmic-pulse {
       0%   { opacity: 0.7; transform: scale(1); }
       100% { opacity: 1; transform: scale(1.03); }
     }
-
-    @keyframes float-stars {
-      0%   { background-position: 0 0, 40px 40px; }
-      100% { background-position: 2000px 2000px, 2040px 2040px; }
-    }
-    
     .card-hover {
       transition: all 0.3s ease;
       border: 1px solid #2a1a3a;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.6);
     }
     .card-hover:hover {
       transform: translateY(-8px) scale(1.03);
@@ -69,34 +45,21 @@
       background: linear-gradient(135deg, #c026d3, #ec4899) !important;
       box-shadow: 0 0 15px rgba(236, 72, 153, 0.5);
     }
-    .popup-glow {
-      box-shadow: 0 0 25px rgba(34, 211, 238, 0.6);
-    }
-    input:focus {
-      box-shadow: 0 0 0 3px rgba(236, 72, 153, 0.4);
-    }
   </style>
 </head>
-<body class="font-sans text-white min-h-screen">
+<body class="min-h-screen">
 
   <!-- Header -->
   <header class="flex items-center justify-between p-5 border-b border-purple-900/50 bg-black/60 backdrop-blur-md sticky top-0 z-50">
     <h1 class="text-3xl font-black neon-title tracking-wider text-pink-600">HOT-STORE</h1>
   </header>
 
-  <!-- Search and Filters -->
+  <!-- Search + Filters -->
   <section class="p-6 max-w-7xl mx-auto space-y-6">
     <div class="flex justify-center">
       <div class="relative w-full max-w-xl">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 absolute left-4 top-1/2 -translate-y-1/2 text-zinc-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M21 21l-5.2-5.2m0 0A7.5 7.5 0 105.2 5.2a7.5 7.5 0 0010.6 10.6z" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-        <input 
-          id="search" 
-          type="text" 
-          placeholder="Search premium folders..." 
-          class="w-full pl-12 pr-5 py-3 text-base rounded-full bg-zinc-900/80 border border-purple-800/50 text-white placeholder-zinc-500 outline-none focus:border-pink-600 transition-all duration-300"
-        />
+        <input id="search" type="text" placeholder="Search premium folders..." 
+               class="w-full pl-12 pr-5 py-3 text-base rounded-full bg-zinc-900/80 border border-purple-800/50 text-white placeholder-zinc-500 outline-none focus:border-pink-600 transition-all duration-300" />
       </div>
     </div>
 
@@ -109,261 +72,168 @@
       <div></div>
       <div class="flex flex-wrap items-center gap-3">
         <span class="text-sm text-zinc-400 font-medium">Sort by:</span>
-        <button id="filterRecent" class="px-5 py-2.5 rounded-full text-sm font-semibold flex items-center gap-2 transition-all duration-300 bg-zinc-800 hover:bg-purple-900/50">
-          <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path d="M10 2a8 8 0 108 8h-1.5a6.5 6.5 0 11-6.5-6.5V2z"/></svg>
-          Recent
-        </button>
-        <button id="filterViews" class="px-5 py-2.5 rounded-full text-sm font-semibold flex items-center gap-2 transition-all duration-300 bg-zinc-800 hover:bg-purple-900/50">
-          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 4.5c-7.5 0-12 7.5-12 7.5s4.5 7.5 12 7.5 12-7.5 12-7.5-4.5-7.5-12-7.5zm0 12a4.5 4.5 0 110-9 4.5 4.5 0 010 9z"/></svg>
-          Views
-        </button>
-        <button id="filterPriceHigh" class="px-5 py-2.5 rounded-full text-sm font-semibold flex items-center gap-2 transition-all duration-300 bg-zinc-800 hover:bg-purple-900/50">
-          <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 1a1 1 0 011 1v1.07c2.282.25 4 2.195 4 4.43 0 2.538-2.03 4.375-4.732 4.911L11 12v1h1a1 1 0 110 2h-1v1a1 1 0 11-2 0v-1.07c-2.282-.25-4-2.195-4-4.43 0-2.538 2.03-4.375 4.732-4.911L13 6V5h-1a1 1 0 110-2h1V2a1 1 0 011-1z"/></svg>
-          Price High
-        </button>
-        <button id="filterPriceLow" class="px-5 py-2.5 rounded-full text-sm font-semibold flex items-center gap-2 transition-all duration-300 bg-zinc-800 hover:bg-purple-900/50">
-          <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 23a1 1 0 01-1-1v-1.07c-2.282-.25-4-2.195-4-4.43 0-2.538 2.03-4.375 4.732-4.911L13 12v-1h-1a1 1 0 110-2h1V8a1 1 0 112 0v1.07c2.282.25 4 2.195 4 4.43 0 2.538-2.03 4.375-4.732 4.911L11 18v1h1a1 1 0 110 2h-1v1a1 1 0 01-1 1z"/></svg>
-          Price Low
-        </button>
+        <button id="filterRecent"    class="px-5 py-2.5 rounded-full text-sm font-semibold bg-zinc-800 hover:bg-purple-900/50 filter-active">Recent</button>
+        <button id="filterViews"     class="px-5 py-2.5 rounded-full text-sm font-semibold bg-zinc-800 hover:bg-purple-900/50">Views</button>
+        <button id="filterPriceHigh" class="px-5 py-2.5 rounded-full text-sm font-semibold bg-zinc-800 hover:bg-purple-900/50">Price High</button>
+        <button id="filterPriceLow"  class="px-5 py-2.5 rounded-full text-sm font-semibold bg-zinc-800 hover:bg-purple-900/50">Price Low</button>
       </div>
     </div>
   </section>
 
-  <!-- Purchase Popup -->
-  <div id="purchase-popup" class="fixed bottom-6 left-6 w-80 md:w-96 bg-gradient-to-br from-zinc-900 to-black text-white px-5 py-4 rounded-2xl shadow-2xl hidden z-50 flex items-center gap-4 popup-glow border border-cyan-500/30">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" fill="#229ED9" class="w-7 h-7 flex-shrink-0">
-      <path d="M120 0C53.7 0 0 53.7 0 120s53.7 120 120 120 120-53.7 120-120S186.3 0 120 0zm53.5 80.2l-19 89.6c-1.4 6.1-4.9 7.7-9.9 4.8l-27.5-20.3-13.3 12.8c-1.5 1.5-2.7 2.7-5.4 2.7l1.9-27.1 49.3-44.5c2.1-1.9-.4-3-3.2-1.1l-61 38.3-26.3-8.2c-5.7-1.8-5.8-5.7 1.2-8.4l102.7-39.6c4.8-1.8 9.1 1.1 7.5 8.1z" />
-    </svg>
-    <div class="text-sm">
-      <p class="font-semibold"><span id="popup-name">John</span> bought <span id="popup-folder">Folder X</span> via Telegram</p>
-    </div>
-  </div>
-
-  <!-- Cards -->
+  <!-- Cards container -->
   <main id="card-container" class="p-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 max-w-7xl mx-auto"></main>
 
   <!-- Pagination -->
   <div id="pagination" class="flex justify-center flex-wrap gap-3 py-8"></div>
 
-  <!-- Footer -->
-  <footer class="bg-black/80 border-t border-purple-900/30 py-10 text-center text-zinc-500 mt-10">
-    <h2 class="text-2xl font-bold text-pink-600 mb-3 neon-title">HOT-STORE</h2>
-    <p class="mb-4 text-zinc-400">Premium adult exclusive content platform.</p>
-    <p class="text-xs">© 2025-2026 HOT-STORE</p>
-  </footer>
-
-  <!-- Script -->
   <script>
-    // ─── CONFIGURAÇÃO DOS LINKS (SUBSTITUA PELOS SEUS LINKS REAIS) ───────
-    const coverUrls = [
-      //BLACK CP😊
-      "https://leopard.hosting.pecon.us/dl/qhihk",
-      //CP PARADISE
-      "https://leopard.hosting.pecon.us/dl/sirul",
-      //😈NEW CP 02🔥
-      "https://leopard.hosting.pecon.us/dl/qqcxz",
-      //✅NEW CP 03🔥
-      "https://leopard.hosting.pecon.us/dl/asnac",
-      //🥵PREMIUM CP🥵
-      "https://example.com/covers/023.jpg",
-      //🔥REN BOYS
-      "https://example.com/covers/023.jpg",
-      //🙈CP GAY
-      "https://leopard.hosting.pecon.us/dl/vgjch",
-      //ANIMAL CP FUCKING
-      "https://leopard.hosting.pecon.us/dl/gmdif",
-      //🔥RAPE CP
-      "https://leopard.hosting.pecon.us/dl/vovoz",
-      //PEDOMOM🍑
-      "https://leopard.hosting.pecon.us/dl/ekwob",
-      //MON AND SON📁
-      "https://leopard.hosting.pecon.us/dl/yvnfh",
-      //FATHER AND DAUGHTER
-      "https://leopard.hosting.pecon.us/dl/svrev",
-      //AMELIA AND BROTHER🍑‼
-      "https://leopard.hosting.pecon.us/dl/zlydm",
-      //🙈LIZZY AND BROTHER🍑
-      "https://leopard.hosting.pecon.us/dl/eusgu",
-      //AMERICAN TEENS✅
-      "https://leopard.hosting.pecon.us/dl/jiusg",
-      //ENGLISH TEENS🙈
-      "https://leopard.hosting.pecon.us/dl/qlviq",
-      //WHITE TEENS
-      "https://leopard.hosting.pecon.us/dl/gtbph",
-      //TEENS LEAKS📁‼
-      "https://leopard.hosting.pecon.us/dl/dfxog",
-      //IVANKA AND BROTHER🤤
-      "https://leopard.hosting.pecon.us/dl/vzpjx",
-      //HIGH SCHOOL SHOTS🫦🥵
-      "https://leopard.hosting.pecon.us/dl/napgs",
-      //DESIRE GARCIA FOLDER📁
-      "https://leopard.hosting.pecon.us/dl/voyki"
-      // adicione mais se precisar
+  document.addEventListener("DOMContentLoaded", () => {
+
+    // ─── PRODUTOS ───────────────────────────────────────
+    const produtos = [
+      { title: "BLACK CP😊",               cover: "https://leopard.hosting.pecon.us/dl/qhihk",   price: 30 },
+      { title: "CP PARADISE",              cover: "https://leopard.hosting.pecon.us/dl/sirul",   price: 30 },
+      { title: "😈NEW CP 02🔥",            cover: "https://leopard.hosting.pecon.us/dl/qqcxz",   price: 30 },
+      { title: "✅NEW CP 03🔥",            cover: "https://leopard.hosting.pecon.us/dl/asnac",   price: 30 },
+      { title: "🥵PREMIUM CP🥵",           cover: "https://example.com/covers/023.jpg",         price: 30 },
+      { title: "🔥REN BOYS",               cover: "https://example.com/covers/023.jpg",         price: 30 },
+      { title: "🙈CP GAY",                 cover: "https://leopard.hosting.pecon.us/dl/vgjch",  price: 30 },
+      { title: "ANIMAL CP FUCKING",        cover: "https://leopard.hosting.pecon.us/dl/gmdif",  price: 30 },
+      { title: "🔥RAPE CP",                cover: "https://leopard.hosting.pecon.us/dl/vovoz",  price: 30 },
+      { title: "PEDOMOM🍑",                cover: "https://leopard.hosting.pecon.us/dl/ekwob",  price: 30 },
+      { title: "MON AND SON📁",            cover: "https://leopard.hosting.pecon.us/dl/yvnfh",  price: 30 },
+      { title: "FATHER AND DAUGHTER",      cover: "https://leopard.hosting.pecon.us/dl/svrev",  price: 30 },
+      { title: "AMELIA AND BROTHER🍑‼",    cover: "https://leopard.hosting.pecon.us/dl/zlydm",  price: 30 },
+      { title: "🙈LIZZY AND BROTHER🍑",    cover: "https://leopard.hosting.pecon.us/dl/eusgu",  price: 30 },
+      { title: "AMERICAN TEENS✅",          cover: "https://leopard.hosting.pecon.us/dl/jiusg",  price: 30 },
+      { title: "ENGLISH TEENS🙈",          cover: "https://leopard.hosting.pecon.us/dl/qlviq",  price: 30 },
+      { title: "WHITE TEENS",              cover: "https://leopard.hosting.pecon.us/dl/gtbph",  price: 30 },
+      { title: "TEENS LEAKS📁‼",           cover: "https://leopard.hosting.pecon.us/dl/dfxog",  price: 30 },
+      { title: "IVANKA AND BROTHER🤤",     cover: "https://leopard.hosting.pecon.us/dl/vzpjx",  price: 30 },
+      { title: "HIGH SCHOOL SHOTS🫦🥵",    cover: "https://leopard.hosting.pecon.us/dl/napgs",  price: 30 },
+      { title: "DESIRE GARCIA FOLDER📁",   cover: "https://leopard.hosting.pecon.us/dl/voyki",  price: 30 }
     ];
 
-    const videoTitles = [
-      "BLACK CP😊",
-      "CP PARADISE",
-      "😈NEW CP 02🔥",
-      "✅NEW CP 03🔥",
-      "🥵PREMIUM CP🥵",
-      "🔥REN BOYS",
-      "🙈CP GAY",
-      "ANIMAL CP FUCKING",
-      "🔥RAPE CP",
-      "PEDOMOM🍑",
-      "MON AND SON📁",
-      "FATHER AND DAUGHTER",
-      "AMELIA AND BROTHER🍑‼",
-      "🙈LIZZY AND BROTHER🍑",
-      "AMERICAN TEENS✅",
-      "ENGLISH TEENS🙈",
-      "WHITE TEENS",
-      "TEENS LEAKS📁‼",
-      "IVANKA AND BROTHER🤤",
-      "HIGH SCHOOL SHOTS🫦🥵",
-      "DESIRE GARCIA FOLDER📁"
-    ];
+    const names = ["John","Luke","Carl","Hazael","Robert","Anna","Ian","Isabella","Mark","Steven","Satoshi","Yuna","David","Chloe","Liam","Emma","Kwame","Jade","Ahmed","Pablo","Michael","Camila","Hans","Greta","Peter","Sophie","Victor","Anya","Aisha","Tariq","Juan","Luisa","Chen","Mei","Arjun","Priya"];
 
-    const folderNames = [...videoTitles];
-    const names = [
-      "John", "Luke", "Carl", "Hazael", "Robert", "Anna",
-      "Ian", "Isabella", "Mark", "Steven", "Satoshi", "Yuna",
-      "David", "Chloe", "Liam", "Emma", "Kwame", "Jade", "Ahmed", "Pablo",
-      "Michael", "Camila", "Hans", "Greta", "Peter", "Sophie", "Victor", "Anya",
-      "Aisha", "Tariq", "Juan", "Luisa", "Chen", "Mei", "Arjun", "Priya"
-    ];
-
-    const cards = Array.from({ length: videoTitles.length }).map((_, i) => ({
-      title: videoTitles[i],
-      time: `${10 + i % 10}s`,
-      image: coverUrls[i] || "https://via.placeholder.com/400x225?text=No+Cover+" + (i+1),
-      label: i % 5 === 0 ? "HOT" : (i % 4 === 0 ? "NEW" : ""),
-      views: Math.floor(Math.random() * 1000),
-      price: Math.floor(Math.random() * 50) + 10,
-      createdAt: Date.now() - i * 100000
-    }));
+    const folderNames = produtos.map(p => p.title);
 
     const PER_PAGE = 12;
     let currentPage = 1;
     let currentFilter = "recent";
 
-    const container = document.getElementById("card-container");
-    const searchInput = document.getElementById("search");
-    const filterRecentButton = document.getElementById("filterRecent");
-    const filterViewsButton = document.getElementById("filterViews");
-    const filterPriceHighButton = document.getElementById("filterPriceHigh");
-    const filterPriceLowButton = document.getElementById("filterPriceLow");
-    const pagination = document.getElementById("pagination");
-    const pageInfo = document.getElementById("page-info");
-    const videosFoundInfo = document.getElementById("videos-found");
+    const cards = produtos.map((prod, i) => ({
+      title: prod.title,
+      time: `${10 + i % 10}s`,
+      image: prod.cover || `https://via.placeholder.com/400x225?text=Cover+${i+1}`,
+      label: i % 5 === 0 ? "HOT" : (i % 4 === 0 ? "NEW" : ""),
+      views: Math.floor(Math.random() * 900) + 100,
+      price: prod.price,
+      createdAt: Date.now() - i * 1000000
+    }));
+
+    // Pegar elementos com segurança
+    const elements = {
+      container:     document.getElementById("card-container"),
+      search:        document.getElementById("search"),
+      filterRecent:  document.getElementById("filterRecent"),
+      filterViews:   document.getElementById("filterViews"),
+      filterPriceHigh: document.getElementById("filterPriceHigh"),
+      filterPriceLow:  document.getElementById("filterPriceLow"),
+      pagination:    document.getElementById("pagination"),
+      pageInfo:      document.getElementById("page-info"),
+      videosFound:   document.getElementById("videos-found")
+    };
+
+    // Se faltar elemento crítico → parar e mostrar aviso no console
+    if (!elements.container) {
+      console.error("Elemento #card-container não encontrado. Verifique o HTML.");
+      return;
+    }
 
     function getFilteredData() {
       let filtered = [...cards];
-      const keyword = searchInput.value.toLowerCase();
-      if (keyword) {
-        filtered = filtered.filter(c => c.title.toLowerCase().includes(keyword));
+      if (elements.search?.value) {
+        const kw = elements.search.value.toLowerCase().trim();
+        filtered = filtered.filter(c => c.title.toLowerCase().includes(kw));
       }
 
-      if (currentFilter === "priceHigh") filtered.sort((a, b) => b.price - a.price);
-      if (currentFilter === "priceLow") filtered.sort((a, b) => a.price - b.price);
-      if (currentFilter === "views") filtered.sort((a, b) => b.views - a.views);
-      if (currentFilter === "recent") filtered.sort((a, b) => b.createdAt - a.createdAt);
+      if (currentFilter === "priceHigh") filtered.sort((a,b)=>b.price - a.price);
+      if (currentFilter === "priceLow")  filtered.sort((a,b)=>a.price - b.price);
+      if (currentFilter === "views")     filtered.sort((a,b)=>b.views - a.views);
+      if (currentFilter === "recent")    filtered.sort((a,b)=>b.createdAt - a.createdAt);
 
       return filtered;
     }
 
-    function paginate(data, page) {
-      const start = (page - 1) * PER_PAGE;
-      const end = start + PER_PAGE;
-      return data.slice(start, end);
-    }
+    function render() {
+      const filtered = getFilteredData();
+      const start = (currentPage - 1) * PER_PAGE;
+      const paginated = filtered.slice(start, start + PER_PAGE);
 
-    function renderPagination(totalItems) {
-      const pages = Math.ceil(totalItems / PER_PAGE);
-      pagination.innerHTML = "";
-      for (let i = 1; i <= pages; i++) {
-        const btn = document.createElement("button");
-        btn.textContent = i;
-        btn.className = `px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${i === currentPage ? 'bg-pink-600 text-white shadow-lg shadow-pink-600/40' : 'bg-zinc-800 hover:bg-zinc-700'}`;
-        btn.onclick = () => {
-          currentPage = i;
-          render();
-        };
-        pagination.appendChild(btn);
-      }
-    }
-
-    function renderCards(data) {
-      container.innerHTML = "";
-      data.forEach((card, index) => {
-        const id = (currentPage - 1) * PER_PAGE + index + 1;
-        container.innerHTML += `
-          <a href="video.html?id=${id}" class="block rounded-2xl overflow-hidden card-hover">
+      // Render cards
+      elements.container.innerHTML = "";
+      paginated.forEach((card, idx) => {
+        const globalIdx = start + idx;
+        const id = globalIdx + 1;
+        elements.container.innerHTML += `
+          <a href="video.html?id=${id}" class="block rounded-2xl overflow-hidden card-hover bg-zinc-900/40">
             <div class="relative">
               <img src="${card.image}" alt="${card.title}" class="w-full h-56 object-cover">
-              ${card.label ? `<div class="absolute top-3 left-3 bg-pink-600/90 backdrop-blur-sm text-xs font-bold px-3 py-1 rounded-full shadow-md">${card.label}</div>` : ""}
+              ${card.label ? `<div class="absolute top-3 left-3 bg-pink-600/90 text-xs font-bold px-3 py-1 rounded-full">${card.label}</div>` : ""}
             </div>
-            <div class="p-5 bg-gradient-to-t from-black/80 to-transparent">
-              <h2 class="text-lg font-bold mb-2 line-clamp-2">${card.title}</h2>
-              <div class="flex justify-between items-center text-sm text-zinc-400">
+            <div class="p-4">
+              <h3 class="font-bold mb-2 line-clamp-2">${card.title}</h3>
+              <div class="flex justify-between text-sm text-zinc-400 mb-2">
                 <span>🕒 ${card.time}</span>
-                <span>👁️ ${card.views.toLocaleString()} views</span>
+                <span>👁️ ${card.views.toLocaleString()}</span>
               </div>
-              <div class="mt-3 text-pink-500 font-semibold">${card.price}$</div>
+              <div class="text-pink-500 font-semibold">${card.price}$</div>
             </div>
           </a>
         `;
       });
+
+      // Pagination
+      const totalPages = Math.ceil(filtered.length / PER_PAGE);
+      elements.pagination.innerHTML = "";
+      for (let i = 1; i <= totalPages; i++) {
+        const btn = document.createElement("button");
+        btn.textContent = i;
+        btn.className = `px-4 py-2 rounded-full text-sm ${i === currentPage ? 'bg-pink-600 text-white' : 'bg-zinc-800 hover:bg-zinc-700'}`;
+        btn.onclick = () => { currentPage = i; render(); };
+        elements.pagination.appendChild(btn);
+      }
+
+      // Info
+      const from = start + 1;
+      const to = Math.min(start + PER_PAGE, filtered.length);
+      if (elements.pageInfo)   elements.pageInfo.textContent   = `Page ${currentPage} (${from}–${to} of ${filtered.length} folders)`;
+      if (elements.videosFound) elements.videosFound.textContent = `${filtered.length} folders found`;
+
+      // Active filter
+      [elements.filterRecent, elements.filterViews, elements.filterPriceHigh, elements.filterPriceLow]
+        .forEach(b => b?.classList.remove("filter-active"));
+      if (currentFilter === "recent")    elements.filterRecent?.classList.add("filter-active");
+      if (currentFilter === "views")     elements.filterViews?.classList.add("filter-active");
+      if (currentFilter === "priceHigh") elements.filterPriceHigh?.classList.add("filter-active");
+      if (currentFilter === "priceLow")  elements.filterPriceLow?.classList.add("filter-active");
     }
 
-    function render() {
-      const filtered = getFilteredData();
-      const paginated = paginate(filtered, currentPage);
-      renderCards(paginated);
-      renderPagination(filtered.length);
-
-      const start = (currentPage - 1) * PER_PAGE + 1;
-      const end = Math.min(start + PER_PAGE - 1, filtered.length);
-      pageInfo.textContent = `Page ${currentPage} (${start}–${end} of ${filtered.length} folders)`;
-      videosFoundInfo.textContent = `${filtered.length} folders found`;
-
-      const filters = [filterRecentButton, filterViewsButton, filterPriceHighButton, filterPriceLowButton];
-      filters.forEach(btn => btn.classList.remove('filter-active'));
-      if (currentFilter === "recent") filterRecentButton.classList.add('filter-active');
-      if (currentFilter === "views") filterViewsButton.classList.add('filter-active');
-      if (currentFilter === "priceHigh") filterPriceHighButton.classList.add('filter-active');
-      if (currentFilter === "priceLow") filterPriceLowButton.classList.add('filter-active');
+    // Eventos
+    if (elements.search) {
+      elements.search.addEventListener("input", () => { currentPage = 1; render(); });
     }
 
-    function showPurchasePopup() {
-      const popup = document.getElementById("purchase-popup");
-      const popupName = document.getElementById("popup-name");
-      const popupFolder = document.getElementById("popup-folder");
+    if (elements.filterRecent)    elements.filterRecent.addEventListener("click",    () => { currentFilter = "recent";    currentPage = 1; render(); });
+    if (elements.filterViews)     elements.filterViews.addEventListener("click",     () => { currentFilter = "views";     currentPage = 1; render(); });
+    if (elements.filterPriceHigh) elements.filterPriceHigh.addEventListener("click", () => { currentFilter = "priceHigh"; currentPage = 1; render(); });
+    if (elements.filterPriceLow)  elements.filterPriceLow.addEventListener("click",  () => { currentFilter = "priceLow";  currentPage = 1; render(); });
 
-      const name = names[Math.floor(Math.random() * names.length)];
-      const folder = folderNames[Math.floor(Math.random() * folderNames.length)];
-
-      popupName.textContent = name;
-      popupFolder.textContent = folder;
-
-      popup.classList.remove("hidden");
-      popup.classList.add("animate-bounce");
-
-      setTimeout(() => {
-        popup.classList.add("hidden");
-        popup.classList.remove("animate-bounce");
-      }, 6500);
-    }
-
-    searchInput.addEventListener("input", () => { currentPage = 1; render(); });
-    filterRecentButton.addEventListener("click", () => { currentFilter = "recent"; currentPage = 1; render(); });
-    filterViewsButton.addEventListener("click", () => { currentFilter = "views"; currentPage = 1; render(); });
-    filterPriceHighButton.addEventListener("click", () => { currentFilter = "priceHigh"; currentPage = 1; render(); });
-    filterPriceLowButton.addEventListener("click", () => { currentFilter = "priceLow"; currentPage = 1; render(); });
-
-    setInterval(showPurchasePopup, 18000);
+    // Primeira renderização
     render();
+
+  });
   </script>
 </body>
 </html>
