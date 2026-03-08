@@ -6,7 +6,6 @@
     <title>HOT-STORE</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-      /* Fundo cósmico rosa-roxo/neon igual ao index */
       body {
         background: linear-gradient(135deg, #2a004a 0%, #4a0028 40%, #640101 70%, #2a004a 100%);
         background-attachment: fixed;
@@ -14,8 +13,6 @@
         overflow-x: hidden;
         min-height: 100vh;
       }
-
-      /* Overlay radial para profundidade e glow sutil */
       body::before {
         content: "";
         position: absolute;
@@ -26,8 +23,6 @@
         opacity: 0.8;
         animation: cosmic-pulse 20s infinite alternate ease-in-out;
       }
-
-      /* Partículas/nebulosa leve (mesmo estilo cósmico sedutor) */
       body::after {
         content: "";
         position: absolute;
@@ -42,23 +37,17 @@
         opacity: 0.15;
         animation: float-stars 80s linear infinite;
       }
-
       @keyframes cosmic-pulse {
         0%   { opacity: 0.7; transform: scale(1); }
         100% { opacity: 1; transform: scale(1.03); }
       }
-
       @keyframes float-stars {
         0%   { background-position: 0 0, 40px 40px; }
         100% { background-position: 2000px 2000px, 2040px 2040px; }
       }
-
-      /* Neon glow para títulos */
       .neon-title {
         text-shadow: 0 0 10px #c026d3, 0 0 20px #c026d3;
       }
-
-      /* Hover premium nos cards sugeridos */
       .zoom-hover {
         transition: all 0.4s ease;
         border: 1px solid #2a1a3a;
@@ -69,8 +58,6 @@
         box-shadow: 0 15px 35px rgba(236, 72, 153, 0.25);
         border-color: #ec4899;
       }
-
-      /* Botão Telegram com glow */
       #contact-seller {
         transition: all 0.3s ease;
       }
@@ -79,14 +66,10 @@
         box-shadow: 0 0 20px rgba(236, 72, 153, 0.5);
         transform: translateY(-2px);
       }
-
-      /* Video player wrapper com borda neon sutil */
       .video-wrapper {
         border: 1px solid #4a0028;
         box-shadow: 0 0 25px rgba(100, 1, 1, 0.4);
       }
-
-      /* Legibilidade em textos escuros */
       .text-zinc-300 { color: #d1d5db; }
       .text-zinc-400 { color: #9ca3af; }
     </style>
@@ -111,7 +94,6 @@
           </div>
         </div>
 
-        
         <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
           <h2 id="video-title" class="text-2xl md:text-3xl font-bold neon-title"></h2>
           <div class="text-right">
@@ -121,11 +103,9 @@
           </div>
         </div>
 
-        
         <div class="bg-zinc-900/80 backdrop-blur-sm p-6 rounded-2xl border border-purple-900/30 shadow-xl space-y-6">
           <h3 class="text-xl font-semibold neon-title">Purchase Options</h3>
           <div class="grid gap-4">
-
             <div class="bg-black/60 p-5 rounded-xl border border-pink-900/30">
               <h4 class="text-pink-500 font-semibold mb-3 text-lg">🔴 Direct Contact</h4>
               <p class="text-sm mb-4 text-zinc-400">Contact the seller directly via Telegram to purchase</p>
@@ -136,7 +116,6 @@
           </div>
         </div>
 
-        
         <div class="bg-zinc-900/80 backdrop-blur-sm p-6 rounded-2xl border border-purple-900/30 shadow-xl text-base">
           <h3 class="text-xl font-semibold mb-4 neon-title">📄 Content Description</h3>
           <p id="video-description" class="text-zinc-300 leading-relaxed whitespace-pre-line"></p>
@@ -152,246 +131,220 @@
     <footer class="bg-black/80 border-t border-purple-900/30 py-10 text-center text-zinc-500 mt-12">
       <h2 class="text-2xl font-bold neon-title text-pink-600 mb-3">HOT-STORE</h2>
       <p class="mb-4 text-zinc-400">Premium adult exclusive content platform.</p>
-      <p class="text-xs">© 2025 HOT-STORE</p>
+      <p class="text-xs">© 2025-2026 HOT-STORE</p>
     </footer>
 
     <script>
-    // ─── CONFIGURAÇÃO DOS LINKS (SUBSTITUA PELOS SEUS LINKS REAIS) ───────
-    const coverUrls = [
-      //BLACK CP😊
-      "https://leopard.hosting.pecon.us/dl/qhihk",
-      //CP PARADISE
-      "https://leopard.hosting.pecon.us/dl/sirul",
-      //😈NEW CP 02🔥
-      "https://leopard.hosting.pecon.us/dl/qqcxz",
-      //✅NEW CP 03🔥
-      "https://leopard.hosting.pecon.us/dl/asnac",
-      //🥵PREMIUM CP🥵
-      "https://example.com/covers/023.jpg",
-      //🔥REN BOYS
-      "https://example.com/covers/023.jpg",
-      //🙈CP GAY
-      "https://leopard.hosting.pecon.us/dl/vgjch",
-      //ANIMAL CP FUCKING
-      "https://leopard.hosting.pecon.us/dl/gmdif",
-      //🔥RAPE CP
-      "https://leopard.hosting.pecon.us/dl/vovoz",
-      //PEDOMOM🍑
-      "https://leopard.hosting.pecon.us/dl/ekwob",
-      //MON AND SON📁
-      "https://leopard.hosting.pecon.us/dl/yvnfh",
-      //FATHER AND DAUGHTER
-      "https://leopard.hosting.pecon.us/dl/svrev",
-      //AMELIA AND BROTHER🍑‼
-      "https://leopard.hosting.pecon.us/dl/zlydm",
-      //🙈LIZZY AND BROTHER🍑
-      "https://leopard.hosting.pecon.us/dl/eusgu",
-      //AMERICAN TEENS✅
-      "https://leopard.hosting.pecon.us/dl/jiusg",
-      //ENGLISH TEENS🙈
-      "https://leopard.hosting.pecon.us/dl/qlviq",
-      //WHITE TEENS
-      "https://leopard.hosting.pecon.us/dl/gtbph",
-      //TEENS LEAKS📁‼
-      "https://leopard.hosting.pecon.us/dl/dfxog",
-      //IVANKA AND BROTHER🤤
-      "https://leopard.hosting.pecon.us/dl/vzpjx",
-      //HIGH SCHOOL SHOTS🫦🥵
-      "https://leopard.hosting.pecon.us/dl/napgs",
-      //DESIRE GARCIA FOLDER📁
-      "https://leopard.hosting.pecon.us/dl/voyki"
-      // adicione mais se precisar
+    // ─── TODOS OS PRODUTOS EM UM ÚNICO ARRAY ────────────────────────────────
+    const produtos = [
+      {
+        title: "BLACK CP😊",
+        cover: "https://leopard.hosting.pecon.us/dl/qhihk",
+        teaser: "https://leopard.hosting.pecon.us/dl/vjnwf",
+        description: "😈BLACK CP 📂 MORE THAN 100 VIDEOS 9GB IN TOTAL MY COMPLETE FOLDER PREMIUM"
+      },
+      {
+        title: "CP PARADISE",
+        cover: "https://leopard.hosting.pecon.us/dl/sirul",
+        teaser: "https://example.com/teasers/001.mp4",
+        description: "CP PARADISE AVAILABLE 🔥MORE THAN 150 VIDEOS✅ 4GB IN TOTAL✅ FULL FOLDER"
+      },
+      {
+        title: "😈NEW CP 02🔥",
+        cover: "https://leopard.hosting.pecon.us/dl/qqcxz",
+        teaser: "https://leopard.hosting.pecon.us/dl/pzhni",
+        description: "NEW CP 02🔥 📂MORE THAN 400 VIDEOS 5GB IN TOTAL MY COMPLETE FOLDER"
+      },
+      {
+        title: "✅NEW CP 03🔥",
+        cover: "https://leopard.hosting.pecon.us/dl/asnac",
+        teaser: "https://leopard.hosting.pecon.us/dl/ftvuk",
+        description: "NEW CP 03 📂➡️ MORE THAN 200 VIDEOS✅ ➡️ 6GB IN TOTAL✅"
+      },
+      {
+        title: "🥵PREMIUM CP🥵",
+        cover: "https://example.com/covers/023.jpg",
+        teaser: "https://leopard.hosting.pecon.us/dl/lbfrr",
+        description: "🥵PREMIUM CP 📂➡️ MORE THAN 300 VIDEOS✅ ➡️5GB IN TOTAL ➡️FULL FOLDER ✅"
+      },
+      {
+        title: "🔥REN BOYS",
+        cover: "https://example.com/covers/023.jpg",
+        teaser: "https://files.catbox.moe/nzs932.mp4",
+        description: "🚨REN BOYS AVAILABLE 🔥MORE THAN 300 VIDEOS ➡️6.5GB IN TOTAL ✅FULL FOLDER ✅"
+      },
+      {
+        title: "🙈CP GAY",
+        cover: "https://leopard.hosting.pecon.us/dl/vgjch",
+        teaser: "https://example.com/teasers/001.mp4",
+        description: "😈C#P  GAY 📂 MORE THAN 100 VIDEOS ✅ 5GB IN TOTAL ✅ COMPLETE FOLDER"
+      },
+      {
+        title: "ANIMAL CP FUCKING",
+        cover: "https://leopard.hosting.pecon.us/dl/gmdif",
+        teaser: "https://files.catbox.moe/smlsv0.mp4",
+        description: "✅ANIMAL CP FUCKING  AVAILABLE 🔥 ➡️266 VIDEOS ➡️5.5GB  ➡️FULL FOLDER ✅"
+      },
+      {
+        title: "🔥RAPE CP",
+        cover: "https://leopard.hosting.pecon.us/dl/vovoz",
+        teaser: "https://leopard.hosting.pecon.us/dl/swfcu",
+        description: "📁RAPE CP FOLDER AVAILABLE 🔥MORE THAN 350 VIDEOS ➡️15.5GB ➡️FULL FOLDER ✅"
+      },
+      {
+        title: "PEDOMOM🍑",
+        cover: "https://leopard.hosting.pecon.us/dl/ekwob",
+        teaser: "https://leopard.hosting.pecon.us/dl/vrchw",
+        description: "🥵PEDOMOM AVAILABLE 🔥 ➡️MORE THAN 20 VIDEOS ➡️2GB ✅ ➡️FULL FOLDER ✅"
+      },
+      {
+        title: "MON AND SON📁",
+        cover: "https://leopard.hosting.pecon.us/dl/yvnfh",
+        teaser: "https://leopard.hosting.pecon.us/dl/ojiiy",
+        description: "📁MOM AND SON FULL HD AVAILABLE 🔥 ➡️MORE THAN 360 VIDEOS✅ ➡️10GB✅  ➡️FULL FOLDER ✅"
+      },
+      {
+        title: "FATHER AND DAUGHTER",
+        cover: "https://leopard.hosting.pecon.us/dl/svrev",
+        teaser: "https://example.com/teasers/001.mp4",
+        description: "✅R£AL !NC#-ST V!D£0S COLLECTION THIS FOLDER GOES CRAZY 😈💯 DAD – DAUGHTER PREMIUM CONTENT"
+      },
+      {
+        title: "AMELIA AND BROTHER🍑‼",
+        cover: "https://leopard.hosting.pecon.us/dl/zlydm",
+        teaser: "https://leopard.hosting.pecon.us/dl/ryqyb",
+        description: "✅‼AMELIA TEEN LEAKS✅ Young Teen Solo Stuff ✅PREMIUM CONTENT"
+      },
+      {
+        title: "🙈LIZZY AND BROTHER🍑",
+        cover: "https://leopard.hosting.pecon.us/dl/eusgu",
+        teaser: "https://leopard.hosting.pecon.us/dl/npoay/7.mp4",
+        description: "🔥LIZZY FOLDER ✅BLACKMAIL VIDEOS🥵 ✅TRAINING VIDEOS🔥 🥵20.22GB Folder on MEGA 🥵3486 FILES, 🥵9 SUBFOLDERS"
+      },
+      {
+        title: "AMERICAN TEENS✅",
+        cover: "https://leopard.hosting.pecon.us/dl/jiusg",
+        teaser: "https://example.com/teasers/001.mp4",
+        description: "😈AMERICAN TEENS AVAILABLE 🔥 ➡️MORE THAN 150 VIDEOS✅ 4.5GB✅ FULL FOLDER ✅"
+      },
+      {
+        title: "ENGLISH TEENS🙈",
+        cover: "https://leopard.hosting.pecon.us/dl/qlviq",
+        teaser: "https://leopard.hosting.pecon.us/dl/sqync",
+        description: "🔥ENGLISH TEENS ✅OVER 500 VIDEOS ✅ 5.19GB IN TOTAL ✅ MORE THAN 200 BLACKMAIL VIDEOS ✅Incest ✅ MY COMPLETE FOLDE"
+      },
+      {
+        title: "WHITE TEENS",
+        cover: "https://leopard.hosting.pecon.us/dl/gtbph",
+        teaser: "https://leopard.hosting.pecon.us/dl/mlwdl",
+        description: "😈WHITE TEENS AVAILABLE 🔥MORE THAN 250 VIDEOS✅ 7GB IN TOTAL FULL FOLDER ✅"
+      },
+      {
+        title: "TEENS LEAKS📁‼",
+        cover: "https://leopard.hosting.pecon.us/dl/dfxog",
+        teaser: "https://leopard.hosting.pecon.us/dl/lpalt",
+        description: "😈T33NS LEAKS FOLDER📁 ✅5GB IN TOTAL ✅MORE THAN 180 VIDEOS ✅MY COMPLETE FOLDER"
+      },
+      {
+        title: "IVANKA AND BROTHER🤤",
+        cover: "https://leopard.hosting.pecon.us/dl/vzpjx",
+        teaser: "https://leopard.hosting.pecon.us/dl/yqonp",
+        description: "🔥IVANKAH- ✅10.22GB folder on MEGA 64 files ✅14-YEAR-OLD GIRL ABUSING HER YOUNGER BROTHER ✅INCEST🥵 ✅🥵SOLO STUFF"
+      },
+      {
+        title: "HIGH SCHOOL SHOTS🫦🥵",
+        cover: "https://leopard.hosting.pecon.us/dl/napgs",
+        teaser: "https://leopard.hosting.pecon.us/dl/gworm",
+        description: "🚨HIGH SCHOOL THOTS🚨 BIG PROMO ✅MORE THAN 300 Videos ✅6GB IN TOTAL ✅TEENS"
+      },
+      {
+        title: "DESIRE GARCIA FOLDER📁",
+        cover: "https://leopard.hosting.pecon.us/dl/voyki",
+        teaser: "https://files.catbox.moe/sapojl.mp4",
+        description: "✅DESIREE GARCIE folder 📁 Snapchat hacking tools snap leak Complete folder"
+      }
     ];
 
-    const videoUrls = [  // deixe "" se não tiver teaser público
-      //BLACK CP😊
-      "https://leopard.hosting.pecon.us/dl/vjnwf",
-      //CP PARADISE
-      "https://example.com/teasers/001.mp4",
-      //😈NEW CP 02🔥
-      "https://leopard.hosting.pecon.us/dl/pzhni",
-      //✅NEW CP 03🔥
-      "https://leopard.hosting.pecon.us/dl/ftvuk",
-      //🥵PREMIUM CP🥵
-      "https://leopard.hosting.pecon.us/dl/lbfrr",
-      //🔥REN BOYS
-      "https://files.catbox.moe/nzs932.mp4",
-      //🙈CP GAY
-      "https://example.com/teasers/001.mp4",
-      //ANIMAL CP FUCKING
-      "https://files.catbox.moe/smlsv0.mp4",
-      //🔥RAPE CP
-      "https://leopard.hosting.pecon.us/dl/swfcu",
-      //PEDOMOM🍑
-      "https://leopard.hosting.pecon.us/dl/vrchw",
-      //MON AND SON📁
-      "https://leopard.hosting.pecon.us/dl/ojiiy",
-      //FATHER AND DAUGHTER
-      "https://example.com/teasers/001.mp4",
-      //AMELIA AND BROTHER🍑‼
-      "https://leopard.hosting.pecon.us/dl/ryqyb",
-      //🙈LIZZY AND BROTHER🍑
-      "https://leopard.hosting.pecon.us/dl/npoay/7.mp4",
-      //AMERICAN TEENS✅
-      "https://example.com/teasers/001.mp4",
-      //ENGLISH TEENS🙈
-      "https://leopard.hosting.pecon.us/dl/sqync",
-      //WHITE TEENS
-      "https://leopard.hosting.pecon.us/dl/mlwdl",
-      //TEENS LEAKS📁‼
-      "https://leopard.hosting.pecon.us/dl/lpalt",
-      //IVANKA AND BROTHER🤤
-      "https://leopard.hosting.pecon.us/dl/yqonp",
-      //HIGH SCHOOL SHOTS🫦🥵
-      "https://leopard.hosting.pecon.us/dl/gworm",
-      //DESIRE GARCIA FOLDER📁
-      "https://files.catbox.moe/sapojl.mp4"
-      // adicione mais se precisar
-    ];
+    // ─── LÓGICA DA PÁGINA ──────────────────────────────────────────────────
+    document.addEventListener("DOMContentLoaded", () => {
+      const params = new URLSearchParams(window.location.search);
+      const id = parseInt(params.get("id")) || 1;
 
-    const videoTitles = [
-      "BLACK CP😊",
-      "CP PARADISE",
-      "😈NEW CP 02🔥",
-      "✅NEW CP 03🔥",
-      "🥵PREMIUM CP🥵",
-      "🔥REN BOYS",
-      "🙈CP GAY",
-      "ANIMAL CP FUCKING",
-      "🔥RAPE CP",
-      "PEDOMOM🍑",
-      "MON AND SON📁",
-      "FATHER AND DAUGHTER",
-      "AMELIA AND BROTHER🍑‼",
-      "🙈LIZZY AND BROTHER🍑",
-      "AMERICAN TEENS✅",
-      "ENGLISH TEENS🙈",
-      "WHITE TEENS",
-      "TEENS LEAKS📁‼",
-      "IVANKA AND BROTHER🤤",
-      "HIGH SCHOOL SHOTS🫦🥵",
-      "DESIRE GARCIA FOLDER📁"
-    ];
+      // Produto atual (índice começa em 0)
+      const produto = produtos[id - 1];
 
-    const videoDescriptions = [
-        //BLACK CP😊
-        "😈BLACK CP 📂 MORE THAN 100 VIDEOS 9GB IN TOTAL MY COMPLETE FOLDER PREMIUM ",
-        //CP PARADISE
-        "CP PARADISE AVAILABLE 🔥MORE THAN 150 VIDEOS✅ 4GB IN TOTAL✅ FULL FOLDER ",
-        //NEW CP 02🔥
-        "NEW CP 02🔥 📂MORE THAN 400 VIDEOS 5GB IN TOTAL MY COMPLETE FOLDER",
-        //NEW CP 03🔥
-        "NEW CP 03 📂➡️ MORE THAN 200 VIDEOS✅ ➡️ 6GB IN TOTAL✅",
-        //PREMIUM CP
-        "🥵PREMIUM CP 📂➡️ MORE THAN 300 VIDEOS✅ ➡️5GB IN TOTAL ➡️FULL FOLDER ✅",
-        //REN BOYS
-        "🚨REN BOYS AVAILABLE 🔥MORE THAN 300 VIDEOS ➡️6.5GB IN TOTAL ✅FULL FOLDER ✅",
-        //CP GAY
-        "😈C#P  GAY 📂 MORE THAN 100 VIDEOS ✅ 5GB IN TOTAL ✅ COMPLETE FOLDER",
-        //ANIMAL CP FUCKING
-        "✅ANIMAL CP FUCKING  AVAILABLE 🔥 ➡️266 VIDEOS ➡️5.5GB  ➡️FULL FOLDER ✅",
-        //RAPE CP
-        "📁RAPE CP FOLDER AVAILABLE 🔥MORE THAN 350 VIDEOS ➡️15.5GB ➡️FULL FOLDER ✅",
-        //PEDOMOM
-        "🥵PEDOMOM AVAILABLE 🔥 ➡️MORE THAN 20 VIDEOS ➡️2GB ✅ ➡️FULL FOLDER ✅",
-        //MON AND SON
-        "📁MOM AND SON FULL HD AVAILABLE 🔥 ➡️MORE THAN 360 VIDEOS✅ ➡️10GB✅  ➡️FULL FOLDER ✅",
-        //FATHER AND DAUGHTER
-        "✅R£AL !NC#-ST V!D£0S COLLECTION THIS FOLDER GOES CRAZY 😈💯 DAD – DAUGHTER PREMIUM CONTENT",
-        //AMELIA
-        "✅‼AMELIA TEEN LEAKS✅ Young Teen Solo Stuff ✅PREMIUM CONTENT",
-        //LIZZY
-        "🔥LIZZY FOLDER ✅BLACKMAIL VIDEOS🥵 ✅TRAINING VIDEOS🔥 🥵20.22GB Folder on MEGA 🥵3486 FILES, 🥵9 SUBFOLDERS",
-        //AMERICAN 
-        "😈AMERICAN TEENS AVAILABLE 🔥 ➡️MORE THAN 150 VIDEOS✅ 4.5GB✅ FULL FOLDER ✅",
-        //ENGLISH TEENS
-        "🔥ENGLISH TEENS ✅OVER 500 VIDEOS ✅ 5.19GB IN TOTAL ✅ MORE THAN 200 BLACKMAIL VIDEOS ✅Incest ✅ MY COMPLETE FOLDE",
-        //WHITE TEENS
-        "😈WHITE TEENS AVAILABLE 🔥MORE THAN 250 VIDEOS✅ 7GB IN TOTAL FULL FOLDER ✅",
-        //TEENS LEAKS
-        "😈T33NS LEAKS FOLDER📁 ✅5GB IN TOTAL ✅MORE THAN 180 VIDEOS ✅MY COMPLETE FOLDER", 
-        //IVANKA
-        "🔥IVANKAH- ✅10.22GB folder on MEGA 64 files ✅14-YEAR-OLD GIRL ABUSING HER YOUNGER BROTHER ✅INCEST🥵 ✅🥵SOLO STUFF",
-        //HIGH SCHOOL SHOTS
-        "🚨HIGH SCHOOL THOTS🚨 BIG PROMO ✅MORE THAN 300 Videos ✅6GB IN TOTAL ✅TEENS", 
-        //DESIRE GARCIA FOLDER     
-        "✅DESIREE GARCIE folder 📁 Snapchat hacking tools snap leak Complete folder"
+      if (!produto) {
+        document.getElementById("video-title").textContent = "Produto não encontrado";
+        document.getElementById("video-description").textContent = "ID inválido.";
+        return;
+      }
 
-    ];
+      // Preencher informações principais
+      document.getElementById("video-title").innerHTML = `${produto.title} <span class='text-pink-500'>⭐</span>`;
+      document.getElementById("video-description").innerHTML = produto.description.split('✅').join('<br>').split('➡️').join('→ ');
+      document.getElementById("video-views").textContent = (Math.floor(Math.random() * 12000) + 500).toLocaleString();
 
-    const id = parseInt(new URLSearchParams(window.location.search).get("id")) || 1;
-    const title = videoTitles[id - 1] || "Video Not Found";
-    const description = (videoDescriptions[id - 1] || "Description not available for this video.").split('✅').join('<br>');
-    const views = Math.floor(Math.random() * 10000);
+      // Poster e vídeo teaser
+      const videoPlayer = document.getElementById("video-player");
+      const videoSource = document.getElementById("video-source");
+      const videoError = document.getElementById("video-error");
 
-    const posterUrl = coverUrls[id - 1] || `https://via.placeholder.com/1280x720?text=No+Poster+${id}`;
-    const videoUrl  = videoUrls[id - 1]  || "";
+      videoPlayer.poster = produto.cover || `https://via.placeholder.com/1280x720?text=No+Poster+${id}`;
 
-    const videoPlayer = document.getElementById("video-player");
-    const videoSource = document.getElementById("video-source");
-    const videoError = document.getElementById("video-error");
-
-    videoPlayer.setAttribute("poster", posterUrl);
-
-    if (videoUrl) {
-        videoSource.setAttribute("src", videoUrl);
+      if (produto.teaser && produto.teaser.trim() !== "") {
+        videoSource.src = produto.teaser;
         videoPlayer.load();
-    } else {
+      } else {
         videoPlayer.controls = false;
         videoError.innerHTML = "Full content available only after purchase via Telegram.<br>Contact us to acquire.";
-        videoError.classList.remove('hidden');
-    }
+        videoError.classList.remove("hidden");
+      }
 
-    videoPlayer.addEventListener('error', function() {
-        videoError.classList.remove('hidden');
-        console.error("Video error:", videoPlayer.error);
-    });
+      videoPlayer.addEventListener("error", () => {
+        videoError.classList.remove("hidden");
+        console.error("Erro no vídeo:", videoPlayer.error?.message);
+      });
 
-    document.getElementById("video-title").innerHTML = `${title} <span class='text-pink-500'>⭐</span>`;
-    document.getElementById("video-views").textContent = views.toLocaleString();
-    document.getElementById("video-description").innerHTML = description; 
-    
-    const suggestedVideos = videoTitles.map((title, index) => ({
-        id: index + 1,
-        title,
-        image: coverUrls[index] || `https://via.placeholder.com/400x225?text=No+Cover+${index+1}`
-    })).filter(v => v.id !== id).sort(() => 0.5 - Math.random()).slice(0, 3);
+      // Vídeos sugeridos (exclui o atual, randomiza 3)
+      const suggested = produtos
+        .map((p, idx) => ({ id: idx + 1, title: p.title, image: p.cover }))
+        .filter(v => v.id !== id)
+        .sort(() => Math.random() - 0.5)
+        .slice(0, 3);
 
-    const container = document.getElementById("suggested-videos");
-    container.innerHTML = "";
-    suggestedVideos.forEach(video => {
+      const container = document.getElementById("suggested-videos");
+      container.innerHTML = "";
+
+      suggested.forEach(video => {
         container.innerHTML += `
-        <a href="video.html?id=${video.id}" class="block zoom-hover rounded-2xl overflow-hidden shadow-xl bg-zinc-900/70 backdrop-blur-sm border border-purple-900/40">
+          <a href="video.html?id=${video.id}" class="block zoom-hover rounded-2xl overflow-hidden shadow-xl bg-zinc-900/70 backdrop-blur-sm border border-purple-900/40">
             <div class="flex flex-col md:flex-row">
               <img src="${video.image}" class="w-full md:w-48 h-48 md:h-full object-cover" alt="${video.title}">
               <div class="p-5 flex flex-col justify-between flex-1">
                 <p class="font-bold text-lg neon-title line-clamp-2">${video.title}</p>
               </div>
             </div>
-        </a>
+          </a>
         `;
-    });
+      });
 
-    // Contact Seller Button Functionality
-    document.getElementById("contact-seller").addEventListener("click", function() {
-        const message = `👋 Hi Admin\n\nI'm interested in purchasing this content:\n"${title}"\n\nPlease:\n- Share payment details\n- Explain delivery process\n\nThanks! 😊`;
-        
+      // Botão Contact Seller (Telegram)
+      document.getElementById("contact-seller").addEventListener("click", () => {
+        const message = `👋 Hi Admin\n\nI'm interested in purchasing this content:\n"${produto.title}"\n\nPlease:\n- Share payment details\n- Explain delivery process\n\nThanks! 😊`;
         const telegramUrl = `https://t.me/USD808?text=${encodeURIComponent(message)}`;
         window.open(telegramUrl, '_blank');
-    });
+      });
 
-    // Ocultar ferramentas de programador
-    document.addEventListener('keydown', function(event) {
-      if (
-          event.key === "F12" || 
-          (event.ctrlKey && event.shiftKey && (event.key === "I" || event.key === "J")) || 
-          (event.ctrlKey && event.key === "U")
-      ) {
-          event.preventDefault();
-      }
+      // Bloqueio básico de dev tools (opcional – não é 100% eficaz)
+      document.addEventListener('keydown', e => {
+        if (e.key === "F12" || 
+            (e.ctrlKey && e.shiftKey && (e.key === "I" || e.key === "J")) || 
+            (e.ctrlKey && e.key === "U")) {
+          e.preventDefault();
+        }
+      });
+      document.addEventListener('contextmenu', e => e.preventDefault());
     });
-
-    document.addEventListener('contextmenu', event => event.preventDefault());
     </script>
 </body>
 </html>
